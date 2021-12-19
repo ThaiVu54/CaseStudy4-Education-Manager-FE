@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Profile - Socialbook</title>
+    <script src="https://kit.fontawesome.com/ef7e2b893b.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+</head>
+
+<body style="background: var(--body-color)">
+<nav class="navbar" style="height: 66.862px;">
+    <div class="nav-left"><a href="/home"><img class="logo" src="/images/logo.png" alt=""
+                                               style="margin-bottom: 8px;"></a>
+    </div>
+    <div class="nav-right">
+        <div class="profile-image online" onclick="UserSettingToggle()">
+            <div class="my-avatar" style="margin-bottom: 8px;">
+
+            </div>
+        </div>
+    </div>
+    <div class="user-settings">
+        <div class="profile-darkButton">
+            <div class="user-profile">
+                <div class="my-avatar">
+
+                </div>
+
+                <div>
+                    <p class="my-username" style="font-family: 'Poppins', sans-serif"></p>
+                    <a href="/profile">See your profile</a>
+                </div>
+            </div>
+            <div id="dark-button" onclick="darkModeON()">
+                <span></span>
+            </div>
+        </div>
+        <hr>
+        <div class="user-profile">
+            <img src="/images/feedback.png" alt="">
+            <div>
+                <p> Give Feedback</p>
+                <a href="#">Help us to improve</a>
+            </div>
+        </div>
+        <hr>
+        <div class="settings-links">
+            <img src="/images/setting.png" alt="" class="settings-icon">
+            <a href="#">Settings & Privary <img src="/images/arrow.png" alt=""></a>
+        </div>
+
+        <div class="settings-links">
+            <img src="/images/help.png" alt="" class="settings-icon">
+            <a href="#">Help & Support <img src="/images/arrow.png" alt=""></a>
+        </div>
+
+        <div class="settings-links">
+            <img src="/images/Display.png" alt="" class="settings-icon">
+            <a href="#">Display & Accessibility <img src="/images/arrow.png" alt=""></a>
+        </div>
+
+        <div class="settings-links">
+            <img src="/images/logout.png" alt="" class="settings-icon">
+            <a href="/">Logout <img src="/images/arrow.png" alt=""></a>
+        </div>
+    </div>
+</nav>
+
+<!-- profile-page-------------------------- -->
+<div class="container" style="display: block;margin: 20px auto;width: 700px;">
+    <div class="card">
+        <div class="card-header">
+            <h5 style="font-weight: bold;color: #1876f2;margin-bottom: 0;line-height: 48px;">Edit your information</h5>
+        </div>
+
+        <form id="edit-user-info">
+            <!--Content-->
+            <div class="card-body">
+                <div class="mb-3" id="intro">
+                    <label class="form-label">Intro</label>
+                    <input class="form-control" type="text" name="intro" id="edit-intro">
+                </div>
+                <div class="mb-3" id="work">
+                    <label class="form-label">Work</label>
+                    <input class="form-control" type="text" name="work" id="edit-work">
+                </div>
+                <div class="mb-3" id="address">
+                    <label class="form-label">Address</label>
+                    <input class="form-control" type="text" name="address" id="edit-address">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Avatar</label>
+                    <input class="form-control" type="file" name="avatar" id="edit-avatar">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cover</label>
+                    <input class="form-control" type="file" name="cover" id="edit-cover">
+                </div>
+            </div>
+        </form>
+        <!--Footer-->
+        <div class="card-footer">
+            <a href="/profile">
+                <button type="button" class="btn btn-secondary" style="float: right; margin: 5px">Back</button>
+            </a>
+            <button type="button" class="btn btn-primary" style="float: right; margin: 5px" onclick="editUserInfo()">
+                Edit now
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<footer id="footer" style="height: 50px;">
+    <p>&copy; Copyright 2021 - Socialbook All Rights Reserved</p>
+</footer>
+
+
+<!--Toast-Message-->
+<div class="position-fixed top-0 end-0" style="z-index: 11; background-color: rgba(255,255,255,1);">
+    <div id="editInfoToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
+        <div class="toast-header" style="background-color: #1876f2">
+            <strong class="me-auto" style="color: #fff">Success</strong>
+            <small style="color: #fff">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" style="color: #fff"></button>
+        </div>
+        <div class="toast-body">
+            Your account has been successfully updated.
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous">
+</script>
+<script src="/js/function.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form>-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Ministry Name</th>-->
+<!--            <td>${ministry.name}</td>-->
+<!--            <td>-->
+<!--                <button onclick="deleteSmartphone(${smartphone.id})">Delete</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button onclick="updateForm(${smartphone.id})">Update</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--        <tr>-->
+<!--            <th>Ministry Email</th>-->
+<!--            <td>${ministry.email}</td>-->
+<!--            <td>-->
+<!--                <button onclick="deleteSmartphone(${smartphone.id})">Delete</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button onclick="updateForm(${smartphone.id})">Update</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--            <td></td>-->
+<!--        <tr>-->
+<!--            <th>Ministry Phone</th>-->
+<!--            <td>${ministry.phone}</td>-->
+<!--            <td>-->
+<!--                <button onclick="deleteSmartphone(${smartphone.id})">Delete</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button onclick="updateForm(${smartphone.id})">Update</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--            <td></td>-->
+<!--        <tr>-->
+<!--            <th>Ministry Username</th>-->
+<!--            <td>${ministry.username}</td>-->
+<!--            <td>-->
+<!--                <button onclick="deleteSmartphone(${smartphone.id})">Delete</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button onclick="updateForm(${smartphone.id})">Update</button>-->
+<!--            </td>-->
+
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--            <td></td>-->
+<!--        <tr>-->
+<!--            <th>Ministry Image</th>-->
+<!--            <td>${ministry.image}</td>-->
+<!--            <td>-->
+<!--                <button onclick="deleteSmartphone(${smartphone.id})">Delete</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button onclick="updateForm(${smartphone.id})">Update</button>-->
+<!--            </td>-->
+
+<!--        </tr>-->
+<!--        &lt;!&ndash;    </tr><tr>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <td></td>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <td><button onClick="getNewMinistry()">SAVE</button></td></tr>&ndash;&gt;-->
+<!--    </table>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+<!--&lt;!&ndash;    <td>${m.name}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;    <td><a href="${c.id}" onClick="editCategoryForm(this)">Edit</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;    <td><a href="${c.id}" onClick="deleteCategory(this)">Delete</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;    </tr>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html>&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Contact form</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">&ndash;&gt;-->
+<!--&lt;!&ndash;    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">&ndash;&gt;-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;        html, body {&ndash;&gt;-->
+<!--&lt;!&ndash;            min-height: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-family: Roboto, Arial, sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 14px;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #666;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        h1 {&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0 0 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-weight: 400;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #1c87c9;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        p {&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0 0 5px;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        .main-block {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: flex;&ndash;&gt;-->
+<!--&lt;!&ndash;            flex-direction: column;&ndash;&gt;-->
+<!--&lt;!&ndash;            justify-content: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            align-items: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            min-height: 100vh;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: #1c87c9;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        form {&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 25px;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 25px;&ndash;&gt;-->
+<!--&lt;!&ndash;            box-shadow: 0 2px 5px #f5f5f5;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: #f5f5f5;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        .fas {&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 25px 10px 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 72px;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #fff;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        .fa-envelope {&ndash;&gt;-->
+<!--&lt;!&ndash;            transform: rotate(-20deg);&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        .fa-at , .fa-mail-bulk{&ndash;&gt;-->
+<!--&lt;!&ndash;            transform: rotate(10deg);&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        input, textarea {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: calc(100% - 18px);&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 8px;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin-bottom: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 1px solid #1c87c9;&ndash;&gt;-->
+<!--&lt;!&ndash;            outline: none;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        input::placeholder {&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #666;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        button {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: none;&ndash;&gt;-->
+<!--&lt;!&ndash;            background: #1c87c9;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 16px;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-weight: 400;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #fff;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        button:hover {&ndash;&gt;-->
+<!--&lt;!&ndash;            background: #2371a0;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        @media (min-width: 568px) {&ndash;&gt;-->
+<!--&lt;!&ndash;            .main-block {&ndash;&gt;-->
+<!--&lt;!&ndash;                flex-direction: row;&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            .left-part, form {&ndash;&gt;-->
+<!--&lt;!&ndash;                width: 50%;&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            .fa-envelope {&ndash;&gt;-->
+<!--&lt;!&ndash;                margin-top: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;                margin-left: 20%;&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            .fa-at {&ndash;&gt;-->
+<!--&lt;!&ndash;                margin-top: -10%;&ndash;&gt;-->
+<!--&lt;!&ndash;                margin-left: 65%;&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            .fa-mail-bulk {&ndash;&gt;-->
+<!--&lt;!&ndash;                margin-top: 2%;&ndash;&gt;-->
+<!--&lt;!&ndash;                margin-left: 28%;&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="main-block">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="left-part">&ndash;&gt;-->
+<!--&lt;!&ndash;        <i class="fas fa-envelope"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;        <i class="fas fa-at"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;        <i class="fas fa-mail-bulk"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <form action="/">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h1>Contact Us</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="info">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input class="fname" type="text" name="name" placeholder="Full name">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" name="name" placeholder="Email">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" name="name" placeholder="Phone number">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" name="name" placeholder="Website">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p>Message</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <textarea rows="4"></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="submit" href="/">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
