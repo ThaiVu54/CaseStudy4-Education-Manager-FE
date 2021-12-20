@@ -1,4 +1,9 @@
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+$(document).ready(function (){
+    document.getElementById("infoMinistry").innerHTML = currentUser.name;
+    document.getElementById("emailMinistry").innerHTML = currentUser.email;
+    document.getElementById("phoneMinistry").innerHTML = currentUser.phone;
+})
 let pageUser = -1;
 let pageGrade = -1;
 function showListUser(a, b){
@@ -104,7 +109,7 @@ function showListUserByGrade(a){
                 content += getUserByGrade(data[i], a)
             }
             content += `</table>`;
-            document.getElementById("showList").innerHTML = content;
+            document.getElementById("showListUser").innerHTML = content;
         }
     });
     event.preventDefault();
@@ -128,7 +133,7 @@ function showListBlog(a){
                 content += showBlog(data[i]);
             }
             content += `</table>`;
-            document.getElementById("showList").innerHTML = content;
+            document.getElementById("showListUser").innerHTML = content;
         }
     });
     event.preventDefault();
