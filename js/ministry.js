@@ -58,7 +58,7 @@ function deleteMinistry(ministryId) {
 
 function back(){
     document.getElementById("info-ministry").innerHTML = `<h3>Welcome to E-Progress</h3>
-<h4><a href="http://localhost:8081/user/createForm">Create User</a></h4>
+<h4><a href="http://localhost:8081/user/createAdminForm">Create User</a></h4>
 <a href="#" onclick="successHandler()">Ministry Manager</a></br>
 <a href="#" onclick="successHandler1()">Class Manager</a></br>
 </div>
