@@ -82,7 +82,7 @@ function showListGrade(a){
             console.log(data);
             let content = `<table class= "table table-dark table-hover"><tr><th>Name</th><th style="text-align: center" colspan="4">Action</th></tr>`;
             for (let i = 0; i < data.content.length; i++){
-                content += getGrade(data.content[i]);
+                content += getGradeMinistry(data.content[i]);
             }
             content += `</table>`;
             document.getElementById("showListUser").innerHTML = content;
@@ -90,7 +90,7 @@ function showListGrade(a){
     });
     event.preventDefault();
 }
-function getGrade(grade){
+function getGradeMinistry(grade){
     return `<tr><td>${grade.name}</td><td><a href="${grade.id}" onclick="showListUserByGrade(this)">Show list user</a></td><td><a href="${grade.id}" onclick="showListBlog(this)">Show blog</a></td><td><a href="#">Edit</a></td><td><a href="">Delete</a></td></tr>`;
 }
 function showListUserByGrade(a){

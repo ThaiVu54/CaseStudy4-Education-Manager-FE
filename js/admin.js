@@ -73,10 +73,9 @@ function back(){
 </div>
 <div class="col-md-6 aboutright">
 </div>
-<div class="clearfix"></div>`
+<div class="clearfix"></div>`;
 }
 function successHandler1() {
-
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -92,7 +91,7 @@ function successHandler1() {
                 <th colspan="3">Action</th>
            </tr>`;
             for (let i = 0; i < grade.length; i++) {
-                content += getGrade(grade[i]);
+                content += getGrade1(grade[i]);
             }
             content+=`<div><button onclick="back()">back</button></div>`;
             content+=`</table>`;
@@ -101,10 +100,8 @@ function successHandler1() {
     });
     event.preventDefault();
 }
-function getGrade(grade) {
-    return `   
-   
-            
+function getGrade1(grade) {
+    return `
             <tr>
                 <td>${grade.name}</td>
                     <td><button onclick="deleteGrade(${grade.id})">Delete</button></td>
