@@ -214,16 +214,16 @@ function  scoreChart(){
     })
     event.preventDefault();
 }
-function sChart(){
+function sChart(score = []){
     const data = {
         labels: [
-            'Red',
-            'Blue',
-            'Yellow'
+            'Math',
+            'Literature',
+            'Physics'
         ],
         datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
+            label: 'Score ',
+            data: score,
             backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)',
@@ -239,8 +239,14 @@ function sChart(){
     let ctx = document.getElementById("myScoreStartsChart").getContext("2d");
     new Chart(ctx,config)
 }
+
+for (let i = 0; i < scores.length; i++) {
+    scores.push(scores[i].math)
+    scores.push(scores[i].literature)
+    scores.push(scores[i].physics)
+}
 window.onload = function (){
-    sChart("myScoreStartsChart")
+    sChart("myScoreStartsChart",scores)
 }
 
 //---------------------SEARCH STUDENT BY CODE--------------//
