@@ -181,3 +181,7 @@ function showListUserByGrade(a) {
         return `<tr><td>${user.name}</td><td>${user.code}</td><td>${user.email}</td><td>${user.phone}</td><td>${user.image}</td><td><a href="">Edit</a></td><td><a href="">Delete</a></td></tr>`;
     }
 
+function logOut(){
+    window.localStorage.clear();
+    window.location.href = "http://localhost:63343/CaseStudy4-Education-Manager-FE/index.html";
+}

@@ -557,3 +557,7 @@ function savePass() {
 }
 //-----------------------------E--------------------------------//
 successHandlerBlog();
+function logOut(){
+    window.localStorage.clear();
+    window.location.href = "http://localhost:63343/CaseStudy4-Education-Manager-FE/index.html";
+}
