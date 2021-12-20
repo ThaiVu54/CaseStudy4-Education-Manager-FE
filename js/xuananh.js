@@ -1,3 +1,4 @@
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let pageUser = -1;
 let pageGrade = -1;
 function showListUser(a, b){
@@ -15,6 +16,10 @@ function showListUser(a, b){
         pageUser--;
     }
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: 'GET',
         url: `http://localhost:8081/user/page/`+role+`?page=`+pageUser,
         success : function (data){
@@ -30,7 +35,7 @@ function showListUser(a, b){
             if (data.content.length == 6){
                 content+= `<button href="${role}" onclick="showListUser(this, true)">next</button>`;
             }
-            document.getElementById("showList").innerHTML = content;
+            document.getElementById("showListUser").innerHTML = content;
         }
     });
     event.preventDefault();
@@ -42,6 +47,10 @@ function deleteUser(a){
     let id = a.getAttribute("href");
     let role = document.getElementById("role").name;
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "DELETE",
         url: "http://localhost:8081/user/"+id,
         success: function (){
@@ -58,6 +67,10 @@ function showListGrade(a){
         pageGrade--;
     }
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "GET",
         url: "http://localhost:8081/grade/page?page="+pageGrade,
         success: function (data){
@@ -67,7 +80,7 @@ function showListGrade(a){
                 content += getGrade(data.content[i]);
             }
             content += `</table>`;
-            document.getElementById("showList").innerHTML = content;
+            document.getElementById("showListUser").innerHTML = content;
         }
     });
     event.preventDefault();
@@ -78,6 +91,10 @@ function getGrade(grade){
 function showListUserByGrade(a){
     let id = a.getAttribute("href");
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "GET",
         url: "http://localhost:8081/grade/user/"+id,
         success: function (data) {
@@ -98,6 +115,10 @@ function getUserByGrade(user, a){
 function showListBlog(a){
     let id = a.getAttribute("href");
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "GET",
         url: "http://localhost:8081/grade/blog/"+id,
         success: function (data){
@@ -120,6 +141,10 @@ function deleteUserST(b){
     let id = b.getAttribute("href");
     let a = document.getElementById("grade").name;
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "DELETE",
         url: "http://localhost:8081/user/"+id,
         success: function (){

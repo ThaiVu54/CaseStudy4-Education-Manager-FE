@@ -1,6 +1,11 @@
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let scores = [];
 function successHandlerBlog() {
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: 'GET',
         url: 'http://localhost:8081/blog/view',
         success: function (data) {
@@ -16,6 +21,10 @@ function successHandlerBlog() {
 function showViewBlog(a) {
     let blogId = a.getAttribute("href");
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "GET",
         url: "http://localhost:8081/blog/" + blogId,
         success: function (blog) {
@@ -45,6 +54,10 @@ function showViewBlog(a) {
 function deleteBlog(a) {
     let idBlog = a.getAttribute("href");
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "DELETE",
         url: 'http://localhost:8081/blog/' + idBlog,
         success: function (message) {
@@ -72,6 +85,10 @@ function editBlog(a) {
             </div>`
     document.getElementById("content-blog").innerHTML = content;
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "GET",
         url: "http://localhost:8081/blog/" + id,
         success: function (blog) {
@@ -98,7 +115,8 @@ function saveBlog() {
     $.ajax({
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
         },
         type: "POST",
         data: JSON.stringify(newBlog),
@@ -125,7 +143,8 @@ function createNewBlog() {
     $.ajax({
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
         },
         data: JSON.stringify(newBlog),
         type: "POST",
@@ -154,6 +173,10 @@ function showCreateFormBlog() {
 //--------------------------SHOW GRADE-----------------//
 function showGrade() {
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: 'GET',
         url: 'http://localhost:8081/grade/gradeByUser/' + 1,
         success: function (data) {
@@ -192,6 +215,10 @@ function getStudent(student) {
 //-----------------------------CHART-----------------------------//
 function  scoreChart(){
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: 'GET',
         url: 'http://localhost:8081/score/list',
         success: function (data){
@@ -247,6 +274,10 @@ window.onload = function (){
 function findByCode() {
     let code = $('#searchCode').val();
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "GET",
         url: 'http://localhost:8081/user/search/' + code,
         success: function (student) {
@@ -281,6 +312,10 @@ function getScore(score) {
 function showStudentScore(a) {
     let studentId = a.getAttribute("href");
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: 'GET',
         url: 'http://localhost:8081/score/' + studentId,
         success: function (data) {
@@ -323,6 +358,10 @@ function showFormAddScore(a) {
 function countAvg(a) {
     let studentId = a.getAttribute("href");
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: 'GET',
         url: 'http://localhost:8081/score/' + studentId,
         success: function (data) {
@@ -357,7 +396,8 @@ function addNewScore(a) {
     $.ajax({
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
         },
         data: JSON.stringify(newScore),
         type: 'POST',
@@ -374,8 +414,12 @@ function addNewScore(a) {
 //---------------------------SHOW INFO TEACHER----------------//
 function showInfoTeacher() {
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "GET",
-        url: 'http://localhost:8081/user/' + 1,
+        url: 'http://localhost:8081/user/' + currentUser.id,
         success: function (data) {
             let content = `<h3>My Info</h3> <input type="submit" href="${data.id}" value="Update" onclick="updateInfoTeacher(this)">
                         <table class="table table-hover">
@@ -417,6 +461,10 @@ function updateInfoTeacher(a) {
                 </div>`
     document.getElementById("content-blog").innerHTML = content;
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "GET",
         url: "http://localhost:8081/user/" + id,
         success: function (user) {
@@ -436,6 +484,10 @@ function saveInfoTeacher(a) {
     let newPhone = $('#nPhone').val();
     let newCode = $('#nCode').val();
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "PUT",
         url: "http://localhost:8081/user/" + id + "/" + newName + "/" + newEmail + "/" + newPhone + "/" + newCode,
         success: function (data) {
@@ -478,6 +530,10 @@ function savePass() {
     let oldPass = $('#oldPass').val();
 
     $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "PUT",
         url: "http://localhost:8081/user/" + 1 + "/" + newPass + "/" + oldPass,
         success: function (data) {

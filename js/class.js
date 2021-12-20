@@ -1,10 +1,10 @@
-
-
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 function successHandler1() {
 
     $.ajax({
         headers: {
             'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
         },
         type: 'GET',
         url: 'http://localhost:8081/grade',
@@ -44,6 +44,7 @@ function showListStudentByClass(idG){
     $.ajax({
         headers: {
             'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
         },
         type: 'GET',
         url: 'http://localhost:8081/grade/'+idG,

@@ -1,8 +1,10 @@
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 function successHandler() {
 
     $.ajax({
         headers: {
             'Accept': 'application/json',
+            'Authorization': 'Bearer '+currentUser.token,
         },
         type: 'GET',
         url: 'http://localhost:8081/user/ministryByRole/3',
@@ -47,6 +49,9 @@ function getMinistry(ministry) {
 
 function deleteMinistry(ministryId) {
     $.ajax({
+        headers: {
+            'Authorization': 'Bearer '+currentUser.token,
+        },
         type: "DELETE",
         url: `http://localhost:8081/user/${ministryId}`,
         success: function () {
