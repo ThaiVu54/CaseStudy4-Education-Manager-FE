@@ -8,7 +8,7 @@
 <html lang="en">
 <!-- Head -->
 <head>
-    <title>EDUCATION-MANAGER</title>
+    <title>E-progress an Education Category Bootstrap Responsive Website Template | About :: w3layouts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta name="keywords" content="E-progress a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -28,9 +28,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//web font-->
 
     <!-- scrolling script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
-        successHandler();
         jQuery(document).ready(function ($) {
             $(".scroll").click(function (event) {
                 event.preventDefault();
@@ -38,167 +41,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
 
-        function successHandler() {
-            $.ajax({
-                headers: {
-                    'Accept': 'application/json',
-                },
-                type: 'GET',
-                url: 'http://localhost:8081/user/ministryByRole/3',
-                success: function (ministry) {
-                    console.log("data=" + ministry);
-                    let content = ``;
-                    for (let i = 0; i < ministry.length; i++) {
-                        content += getMinistry(ministry[i]);
-                    }
-
-                    document.getElementById('info-ministry').innerHTML = content;
-                }
-            });
-        }
-
-        function getMinistry(ministry) {
-            return `   <table border="1">
-            <tr>
-                <th>Ministry Name</th>
-                <td>${ministry.name}</td>
-           </tr>
-            <tr>
-                <th>Ministry Email</th>
-                <td>${ministry.email}</td>
-            </tr>
-            <tr>
-                <th>Ministry Phone</th>
-                <td>${ministry.phone}</td>
-        </tr>
-            <tr>
-                <th>Ministry Username</th>
-                <td>${ministry.username}</td>
-        </tr>
-            <tr>
-                <th>Ministry Image</th>
-                <td><img src="" alt="" width="50" height="50"></td>
-            </tr>` +
-                `<tr>
-                    <button onclick="deleteMinistry(${ministry.id})">Delete</button>
-                    <button><a href="http://localhost:63342/education-manager/education-manager.main/templates/ministry/update.html">Update</a></button>
-                </tr>
-        </table>`
-        }
-
-        function deleteMinistry(ministryId) {
-            $.ajax({
-                type: "DELETE",
-                url: `http://localhost:8081/user/${ministryId}`,
-                success: function () {
-                    successHandler();
-                }
-            });
-            event.preventDefault();
-        }
-
-        //todo -------------------------------
-        // function updateMinistry(ministryId) {
-        //     let name = $('#name').val();
-        //     let email = $('#email').val();
-        //     let phone = $('#phone').val();
-        //     let username = $('#username').val();
-        //     let image = $('#image').val();
-        //     if (ministryId === -1) {
-        //         let ministry = {
-        //             id: ministryId,
-        //             name: name,
-        //             email: email,
-        //             phone: phone,
-        //             username: username,
-        //             image: image
-        //         };
-        //         $.ajax({
-        //             headers: {
-        //                 'Accept': 'application/json',
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             type: "PUT",
-        //             data: JSON.stringify(ministry),
-        //             url: `http://localhost:8081/user/${ministryId}`,
-        //             success: function () {
-        //                 alert("Update Success")
-        //             }
-        //         })
-        //     }
-        // }
-        //todo -------------------------------------
-        //     function getMinistry(ministry) {
-        //         return `   <table>
-        //     <tr>
-        //         <th>Ministry Name</th>
-        //         <td>${ministry.name}</td>
-        //         <td>
-        //             <button onclick="deleteMinistry(${ministry.id})">Delete</button>
-        //         </td>
-        //         <td>
-        //             <button onclick="updateMinistry(${ministry.id})">Update</button>
-        //         </td>
-        //     </tr>
-        //     <tr>
-        //         <td></td>
-        //     <tr>
-        //         <th>Ministry Email</th>
-        //         <td>${ministry.email}</td>
-        //         <td>
-        //             <button onclick="deleteMinistry(${ministry.id})">Delete</button>
-        //         </td>
-        //         <td>
-        //             <button onclick="updateMinistry(${ministry.id})">Update</button>
-        //         </td>
-        //     </tr>
-        //     <tr>
-        //         <td></td>
-        //         <td></td>
-        //     <tr>
-        //         <th>Ministry Phone</th>
-        //         <td>${ministry.phone}</td>
-        //         <td>
-        //             <button onclick="deleteMinistry(${ministry.id})">Delete</button>
-        //         </td>
-        //         <td>
-        //             <button onclick="updateMinistry(${ministry.id})">Update</button>
-        //         </td>
-        //     </tr>
-        //     <tr>
-        //         <td></td>
-        //         <td></td>
-        //     <tr>
-        //         <th>Ministry Username</th>
-        //         <td>${ministry.username}</td>
-        //         <td>
-        //             <button onclick="deleteMinistry(${ministry.id})">Delete</button>
-        //         </td>
-        //         <td>
-        //             <button onclick="updateMinistry(${ministry.id})">Update</button>
-        //         </td>
-        //
-        //     </tr>
-        //     <tr>
-        //         <td></td>
-        //         <td></td>
-        //     <tr>
-        //         <th>Ministry Image</th>
-        //         <td>${ministry.image}</td>
-        //         <td>
-        //             <button onclick="deleteMinistry(${ministry.id})">Delete</button>
-        //         </td>
-        //         <td>
-        //             <button onclick="updateMinistry(${ministry.id})">Update</button>
-        //         </td>
-        //     </tr>
-        // </table>`
-        //     }
-
     </script>
+    <script src="js/teacherjs.js"></script>
     <!-- //scrolling script -->
 </head>
-
 <!-- Body -->
 <body>
 <!-- banner -->
@@ -226,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </button>
                     <div class="navbar-brand logo ">
                         <h1 class="animated wow pulse" data-wow-delay=".5s">
-                            <a href="home.html">ADMIN-Page</a></h1>
+                            <a href="index.html">E-Progress</a></h1>
                     </div>
 
                 </div>
@@ -234,49 +80,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav link-effect-4">
-                        <li class="active"><a href="home.html" data-hover="Home">Home</a></li>
-                        <li><a href="ministry.html" data-hover="About">manager-ministry </a></li>
-                        <li><a href="gallery.html" data-hover="Gallery">Gallery</a></li>
+                        <li class="active"><a href="teacher.html" data-hover="About">Home </a></li>
+                        <li><a style="cursor: pointer" onclick="showCreateFormBlog()" data-hover="Gallery">Create Blog</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Pages <b
+                            <a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Teacher <b
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="icons.html">Icons</a></li>
-                                <li><a href="typography.html">Short Codes</a></li>
+                                <li><a style="cursor: pointer"  onclick="showInfoTeacher()">Info</a></li>
+                                <li><a style="cursor: pointer" onclick="editPassTeacher()">Edit-Pass</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html" data-hover="Contact">Contact</a></li>
-                        <li><a href="#" data-hover="information">information</a></li>
+                        <li><a style="cursor: pointer" onclick="showGrade()" data-hover="Contact">Grade</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
-    <h2>Manager-Ministry</h2>
+    <h2>Teacher Home</h2>
 </div>
 <!-- //banner -->
 
 <!-- about -->
 <div class="about">
-    <div class="container">
-        <h3 class="heading">INFORMATIN MINISTRY</h3>
+    <div class="container" id="content-blog">
+        <div style="width: 500px; height: 500px" id="chartContent">
+            <canvas  id="myScoreStartsChart"></canvas>
+        </div>
+        <h3 class="heading">Welcome To My Teacher</h3>
         <div class="col-md-6 aboutleft">
-            <h3>Welcome to Education</h3>
-
-            <!--            hien thi ministry-->
-            <div id="info-ministry">
+            <h3>My Blog</h3>
+            <div id="title-blog">
 
             </div>
-            <!--            hien thị ministry-->
-
-            <!--            			<p class="para1">Donec bibendum velit quis diam venenatis, vulputate aliquam sapien blandit.-->
-            <!--            			Etiam dui massa, vehicula a convallis a, facilisis vitae neque.Pellentesque sit amet-->
-            <!--            			odio quis libero eleifend congue at ac justo. Suspendisse posuere congue accumsan Vulputate aliquam sapien. </p>-->
-            <!--            			<p><i class="fa fa-check" aria-hidden="true"></i> Proin tempor pulvinar Vivamus nisi hendrerit et. </p>-->
-            <!--            			<p><i class="fa fa-check" aria-hidden="true"></i> Proin tempor pulvinar Vivamus nisi hendrerit et. </p>-->
-            <!--            			<p><i class="fa fa-check" aria-hidden="true"></i> Proin tempor pulvinar Vivamus nisi hendrerit et. </p>-->
-            <!--            			<p><i class="fa fa-check" aria-hidden="true"></i> Proin tempor pulvinar Vivamus nisi hendrerit et. </p>-->
         </div>
         <div class="col-md-6 aboutright">
             <img src="images/about.jpg" alt=""/>
@@ -324,11 +160,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h3 class="heading">Teachers</h3>
         <div class="teamgrids">
             <div class="col-md-3 teamgrid1">
-                <img src="images/t1.jpg" alt=""/>
+                <img src="https://zpsocial-f49-org.zadn.vn/073c4e1a1ab1f6efafa0.jpg" alt=""/>
                 <div class="teaminfo">
-                    <h3>Michael adam</h3>
+                    <h3>Xuân Anh</h3>
                     <div class="team-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-pinterest-p"></i></a>
@@ -340,11 +176,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="col-md-3 teamgrid1">
-                <img src="images/t2.jpg" alt=""/>
+                <img src="https://s120-ava-talk.zadn.vn/9/f/0/c/1/120/7d5908905a8f22d7de56dac364691cfd.jpg" alt=""/>
                 <div class="teaminfo">
-                    <h3>Rebecca</h3>
+                    <h3>Đức Lập</h3>
                     <div class="team-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/duclaptq/"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-pinterest-p"></i></a>
@@ -356,9 +192,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="col-md-3 teamgrid1">
-                <img src="images/t3.jpg" alt=""/>
+                <img src="https://zpsocial-f45-org.zadn.vn/489e6048c67f2921706e.jpg" alt=""/>
                 <div class="teaminfo">
-                    <h3>Sara</h3>
+                    <h3>Quang Ý</h3>
                     <div class="team-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
@@ -372,11 +208,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="col-md-3 teamgrid1">
-                <img src="images/t4.jpg" alt=""/>
+                <img src="https://s120-ava-talk.zadn.vn/4/e/c/9/5/120/93f7c7938ae0ce13fa62b6b7dc0fdeb7.jpg" alt=""/>
                 <div class="teaminfo">
-                    <h3>Leonardo pal</h3>
+                    <h3>Thái Vũ</h3>
                     <div class="team-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-pinterest-p"></i></a>
