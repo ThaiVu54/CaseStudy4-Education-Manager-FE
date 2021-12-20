@@ -183,7 +183,7 @@ function showGrade() {
             'Authorization': 'Bearer '+currentUser.token,
         },
         type: 'GET',
-        url: 'http://localhost:8081/grade/gradeByUser/' + 1,
+        url: 'http://localhost:8081/grade/gradeByUser/' + currentUser.id,
         success: function (data) {
             let content = `<h3>My Grade</h3> <input type="text" placeholder="Enter Student Code" id="searchCode">
                         <input type="button" onclick="findByCode()" value="Search"> <input type="button" onclick="scoreChart()" value="Score chart">
@@ -228,6 +228,7 @@ function  scoreChart(){
         url: 'http://localhost:8081/score/list',
         success: function (data){
             scores = data;
+            console.log(scores)
             let content =`
 <h3>Score Chart</h3>
 <table class="table table-hover">
@@ -246,16 +247,16 @@ function  scoreChart(){
     })
     event.preventDefault();
 }
-function sChart(){
+function sChart(id,sc = []){
     const data = {
         labels: [
-            'Red',
-            'Blue',
-            'Yellow'
+            'Math',
+            'Literature',
+            'Physics'
         ],
         datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
+            label: 'Score ',
+            data: sc,
             backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)',
@@ -268,11 +269,17 @@ function sChart(){
         type: 'doughnut',
         data: data,
     };
-    let ctx = document.getElementById("myScoreStartsChart").getContext("2d");
+    let ctx = document.getElementById(id).getContext("2d");
     new Chart(ctx,config)
 }
+let sc = [];
+for (let i = 0; i < scores.length; i++) {
+    sc.push(scores[i].math)
+    sc.push(scores[i].literature)
+    sc.push(scores[i].physics)
+}
 window.onload = function (){
-    sChart("myScoreStartsChart")
+    sChart("myScoreStartsChart",sc)
 }
 
 //---------------------SEARCH STUDENT BY CODE--------------//
@@ -494,7 +501,7 @@ function saveInfoTeacher(a) {
             'Authorization': 'Bearer '+currentUser.token,
         },
         type: "PUT",
-        url: "http://localhost:8081/user/" + id + "/" + newName + "/" + newEmail + "/" + newPhone + "/" + newCode,
+        url: "http://localhost:8081/user/" + currentUser.id + "/" + newName + "/" + newEmail + "/" + newPhone + "/" + newCode,
         success: function (data) {
             let content = `<h3>My Grade</h3> <input type="submit" href="${data.id}" value="Update" onclick="updateInfoTeacher(this)">
                         <table class="table table-hover">
@@ -540,7 +547,7 @@ function savePass() {
             'Authorization': 'Bearer '+currentUser.token,
         },
         type: "PUT",
-        url: "http://localhost:8081/user/" + 1 + "/" + newPass + "/" + oldPass,
+        url: "http://localhost:8081/user/" + currentUser.id + "/" + newPass + "/" + oldPass,
         success: function (data) {
             let content = `${data}`
             document.getElementById("content-blog").innerHTML = content;
