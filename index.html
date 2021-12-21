@@ -52,13 +52,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				console.log(data);
 				window.localStorage.setItem("currentUser", JSON.stringify(data));
 				if (data.roles[0].authority == "ROLE_MINISTRY"){
-					window.location.href = "http://localhost:63343/CaseStudy4-Education-Manager-FE/ministry.html";
+					window.location.href = "http://localhost:63342/CaseStudy4-Education-Manager-FE/ministry.html";
 				}
 				else if (data.roles[0].authority == "ROLE_TEACHER"){
 					window.location.href = "http://localhost:63342/CaseStudy4-Education-Manager-FE/teacher.html";
 				}
 				else if (data.roles[0].authority == "ROLE_ADMIN"){
-					window.location.href = "http://localhost:63343/CaseStudy4-Education-Manager-FE/admin.html";
+					window.location.href = "http://localhost:63342/CaseStudy4-Education-Manager-FE/admin.html";
+				}
+				else if (data.roles[0].authority == "ROLE_STUDENT"){
+					window.location.href = "http://localhost:63342/CaseStudy4-Education-Manager-FE/student.html";
 				}
 			}
 		});
@@ -71,7 +74,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- Body -->
 <body>
-
 <!-- banner -->
 <div class="banner">
 	<div class="header-top">
@@ -94,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="mb-3">
 						<input type="password" class="form-control password" id="login-password" name="loginPassword"
-							   placeholder="Password"></span>-->
+							   placeholder="Password"></span>
 					</div>
 					<input onclick="login()" type="submit" class="btn btn-custom btn-lg btn-block mt-3" value="Login">
 				</form>

@@ -1,4 +1,9 @@
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+$(document).ready(function (){
+    document.getElementById("infoMinistry").innerHTML = currentUser.name;
+    document.getElementById("emailMinistry").innerHTML = currentUser.email;
+    document.getElementById("phoneMinistry").innerHTML = currentUser.phone;
+})
 let pageUser = -1;
 let pageGrade = -1;
 function showListUser(a, b){
@@ -77,7 +82,7 @@ function showListGrade(a){
             console.log(data);
             let content = `<table class= "table table-dark table-hover"><tr><th>Name</th><th style="text-align: center" colspan="4">Action</th></tr>`;
             for (let i = 0; i < data.content.length; i++){
-                content += getGrade(data.content[i]);
+                content += getGradeMinistry(data.content[i]);
             }
             content += `</table>`;
             document.getElementById("showListUser").innerHTML = content;
@@ -85,8 +90,8 @@ function showListGrade(a){
     });
     event.preventDefault();
 }
-function getGrade(grade){
-    return `<tr><td>${grade.name}</td><td><a href="${grade.id}" onclick="showListUserByGrade(this)">Show list user</a></td><td><a href="${grade.id}" onclick="showListBlog(this)">Show blog</a></td><td><a href="#">Edit</a></td><td><a href="">Delete</a></td></tr>`;
+function getGradeMinistry(grade){
+    return `<tr><td>${grade.name}</td><td><a href="${grade.id}" onclick="showListUserByGrade(this)">Show list user</a></td><td><a href="${grade.id}" onclick="showListBlog(this)">Show blog</a></td><td><a href="#">Edit</a></td><td><a href="#">Delete</a></td></tr>`;
 }
 function showListUserByGrade(a){
     let id = a.getAttribute("href");
@@ -104,13 +109,13 @@ function showListUserByGrade(a){
                 content += getUserByGrade(data[i], a)
             }
             content += `</table>`;
-            document.getElementById("showList").innerHTML = content;
+            document.getElementById("showListUser").innerHTML = content;
         }
     });
     event.preventDefault();
 }
 function getUserByGrade(user, a){
-    return `<tr><td>${user.name}</td><td>${user.code}</td><td>${user.email}</td><td>${user.phone}</td><td>${user.image}</td><td><a href="">Edit</a></td><td><a id="grade" name="${a}" href="${user.id}" onclick="deleteUserST(this)">Delete</a></td></tr>`;
+    return `<tr><td>${user.name}</td><td>${user.code}</td><td>${user.email}</td><td>${user.phone}</td><td><img width="50" height="50" src="http://localhost:8081/getimage/${user.image}" alt=""></td><td><a href="">Edit</a></td><td><a id="grade" name="${a}" href="${user.id}" onclick="deleteUserST(this)">Delete</a></td></tr>`;
 }
 function showListBlog(a){
     let id = a.getAttribute("href");
@@ -128,7 +133,7 @@ function showListBlog(a){
                 content += showBlog(data[i]);
             }
             content += `</table>`;
-            document.getElementById("showList").innerHTML = content;
+            document.getElementById("showListUser").innerHTML = content;
         }
     });
     event.preventDefault();
@@ -152,4 +157,8 @@ function deleteUserST(b){
         }
     });
     event.preventDefault();
+}
+function logOut(){
+    window.localStorage.clear();
+    window.location.href = "http://localhost:63342/CaseStudy4-Education-Manager-FE/index.html";
 }

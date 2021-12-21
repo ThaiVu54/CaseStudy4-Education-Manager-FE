@@ -1,4 +1,9 @@
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+$(document).ready(function (){
+    document.getElementById("infoTeacher").innerHTML = currentUser.name;
+    document.getElementById("emailTeacher").innerHTML = currentUser.email;
+    document.getElementById("phoneTeacher").innerHTML = currentUser.phone;
+})
 let scores = [];
 function successHandlerBlog() {
     $.ajax({
@@ -552,3 +557,7 @@ function savePass() {
 }
 //-----------------------------E--------------------------------//
 successHandlerBlog();
+function logOut(){
+    window.localStorage.clear();
+    window.location.href = "http://localhost:63342/CaseStudy4-Education-Manager-FE/index.html";
+}

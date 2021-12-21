@@ -28,23 +28,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//web font-->
 
     <!-- scrolling script -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
-            });
-        });
 
     </script>
-    <script src="js/teacherjs.js"></script>
+    <script src="js/student.js"></script>
     <!-- //scrolling script -->
 </head>
+
 <!-- Body -->
 <body>
 <!-- banner -->
@@ -52,10 +42,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header-top">
         <div class="container">
             <div class="header-top-right">
-                <p id="emailTeacher"><i class="fa fa-envelope" aria-hidden="true"></i><a
-                        href="mailto:info@example.com">info@example1.com</a></p>
-                <p id="phoneTeacher"><i class="fa fa-phone" aria-hidden="true"></i> +1 234 567 8901</p>
-                <h1 style="color: white" id="infoTeacher"></h1>
+                <p id="emailStudent1"><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example1.com</a></p>
+                <p id="phoneStudent1"><i class="fa fa-phone" aria-hidden="true"></i> +1 234 567 8901</p>
+                <h1 id="infoStudent1" style="color: white"></h1>
                 <p><button onclick="logOut()">Logout</button></p>
             </div>
         </div>
@@ -74,7 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </button>
                     <div class="navbar-brand logo ">
                         <h1 class="animated wow pulse" data-wow-delay=".5s">
-                            <a href="index.html">E-Progress</a></h1>
+                            <a href="#">E-Progress</a></h1>
                     </div>
 
                 </div>
@@ -82,42 +71,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav link-effect-4">
-                        <li class="active"><a href="teacher.html" data-hover="About">Home </a></li>
-                        <li><a style="cursor: pointer" onclick="showCreateFormBlog()" data-hover="Gallery">Create Blog</a></li>
+                        <li><a href="#" data-hover="Home">Home</a></li>
+                        <li class="active"><a href="student.html" data-hover="About">Manager</a></li>
+                        <li><a href="#" data-hover="Gallery">Gallery</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Teacher <b
+                            <a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Pages <b
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a style="cursor: pointer"  onclick="showInfoTeacher()">Info</a></li>
-                                <li><a style="cursor: pointer" onclick="editPassTeacher()">Edit-Pass</a></li>
+                                <li><a href="icons.html">Icons</a></li>
+                                <li><a href="#">Short Codes</a></li>
                             </ul>
                         </li>
-                        <li><a style="cursor: pointer" onclick="showGrade()" data-hover="Contact">Grade</a></li>
+                        <li><a href="#" data-hover="Contact">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
-    <h2>Teacher Home</h2>
 </div>
 <!-- //banner -->
 
 <!-- about -->
-<div class="about">
-    <div class="container" id="content-blog">
-<!--        <div style="width: 300px; height: 300px" id="chartContent">-->
-<!--            <canvas  id="myScoreStartsChart"></canvas>-->
-<!--        </div>-->
-        <h3 class="heading">Welcome To My Teacher</h3>
-        <div class="col-md-6 aboutleft">
-            <h3>My Blog</h3>
-            <div id="title-blog">
-
+<div class="about" style="background: #fadfad">
+    <div class="container" >
+        <h3 class="heading" style="color: orangered;
+        font-size: 50pt;
+        text-shadow: 5px 3px 4px grey;
+        font-weight: bold;background: violet">STUDENT HOME</h3>
+        <div class="col-md-8 aboutleft" id="info-student" style="border: 1px">
+            <h3>Welcome Education-Manager</h3>
+            <div>
+                <button onclick="showInfo()">Show info</button>
             </div>
+            <div>
+                <button onclick="showScore()">Show score</button>
+            </div>
+            <div>
+                <button onclick="editPass()">Edit Pass</button>
+            </div>
+
         </div>
-        <div class="col-md-6 aboutright">
-            <img src="images/about.jpg" alt=""/>
+        <div class="col-md-4 aboutright">
+            <img src="https://scontent.fhan2-4.fna.fbcdn.net/v/t39.30808-6/246629013_354835903082456_5410402453939892304_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=dbeb18&_nc_ohc=fOaPUm7UA3kAX_0LBSa&tn=any9z_yv8uLhTsbB&_nc_ht=scontent.fhan2-4.fna&oh=00_AT-wFly1xkRpfdOi8bj86P5rxnur3ZQ2caSqBt4IsPRDCA&oe=61C50AF1"
+                 alt=""/>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -162,11 +159,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h3 class="heading">Teachers</h3>
         <div class="teamgrids">
             <div class="col-md-3 teamgrid1">
-                <img src="https://zpsocial-f49-org.zadn.vn/073c4e1a1ab1f6efafa0.jpg" alt=""/>
+                <img src="images/t111.jpg" alt="" height="340"/>
                 <div class="teaminfo">
-                    <h3>Xuân Anh</h3>
+                    <h3>MR.ANH</h3>
                     <div class="team-social">
-                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-pinterest-p"></i></a>
@@ -178,11 +175,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="col-md-3 teamgrid1">
-                <img src="https://s120-ava-talk.zadn.vn/9/f/0/c/1/120/7d5908905a8f22d7de56dac364691cfd.jpg" alt=""/>
+                <img src="images/t2222.jpg" alt="" height="340"/>
                 <div class="teaminfo">
-                    <h3>Đức Lập</h3>
+                    <h3>MR.THAI</h3>
                     <div class="team-social">
-                        <a href="https://www.facebook.com/duclaptq/"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-pinterest-p"></i></a>
@@ -193,10 +190,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         mail@example1.com</a></p>
                 </div>
             </div>
-            <div class="col-md-3 teamgrid1">
-                <img src="https://zpsocial-f45-org.zadn.vn/489e6048c67f2921706e.jpg" alt=""/>
+            <div class="col-md-3 teamgrid1" >
+                <img src="images/t222.jpg" alt="" height="340"/>
                 <div class="teaminfo">
-                    <h3>Quang Ý</h3>
+                    <h3>Sara</h3>
                     <div class="team-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
@@ -210,11 +207,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="col-md-3 teamgrid1">
-                <img src="https://s120-ava-talk.zadn.vn/4/e/c/9/5/120/93f7c7938ae0ce13fa62b6b7dc0fdeb7.jpg" alt=""/>
+                <img src="images/t44.jpg" alt="" height="340"/>
                 <div class="teaminfo">
-                    <h3>Thái Vũ</h3>
+                    <h3>Leonardo pal</h3>
                     <div class="team-social">
-                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-pinterest-p"></i></a>
