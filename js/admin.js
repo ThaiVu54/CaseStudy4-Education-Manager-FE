@@ -3,6 +3,7 @@ $(document).ready(function () {
     document.getElementById("infoAdmin").innerHTML = currentUser.name;
     document.getElementById("emailAdmin").innerHTML = currentUser.email;
     document.getElementById("phoneAdmin").innerHTML = currentUser.phone;
+    document.getElementById("imgAdmin").innerHTML = `<img src="http://localhost:8081/getimage/${currentUser.image}" width="50" height="50">`;
 })
 
 function successHandler() {
@@ -75,11 +76,10 @@ function back() {
 </div>
 <div class="col-md-6 aboutright">
 </div>
-<div class="clearfix"></div>`
+<div class="clearfix"></div>`;
 }
 
 function successHandler1() {
-
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -183,5 +183,5 @@ function showListUserByGrade(a) {
 
 function logOut(){
     window.localStorage.clear();
-    window.location.href = "http://localhost:63343/CaseStudy4-Education-Manager-FE/index.html";
+    window.location.href = "http://localhost:63342/CaseStudy4-Education-Manager-FE/index.html";
 }

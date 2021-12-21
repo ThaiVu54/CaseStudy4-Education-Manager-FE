@@ -559,5 +559,5 @@ function savePass() {
 successHandlerBlog();
 function logOut(){
     window.localStorage.clear();
-    window.location.href = "http://localhost:63343/CaseStudy4-Education-Manager-FE/index.html";
+    window.location.href = "http://localhost:63342/CaseStudy4-Education-Manager-FE/index.html";
 }
